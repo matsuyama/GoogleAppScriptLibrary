@@ -1,0 +1,19 @@
+function STOCKPRICE1(code){
+  let url = "https://finance.yahoo.co.jp/quote/" + code;
+  let html = UrlFetchApp.fetch(url).getContentText();
+  let stockPrice = Parser.data(html)
+    .from("<span class=\"StyledNumber__value__3rXW\">")
+    .to("</span>")
+    .build();
+  return stockPrice;
+}
+
+function STOCKPRICE2(code){
+  let url = "https://finance.yahoo.co.jp/quote/" + code;
+  let html = UrlFetchApp.fetch(url).getContentText();
+  let stockPrice = Parser.data(html)
+    .from("<span class=\"number__3BGK\">")
+    .to("</span>")
+    .build();
+  return stockPrice;
+}
